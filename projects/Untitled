@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Open Pot Holes</title>
+        <style>
+            body {background-color: #A277FF;}
+            p, h1 {font-family: helvetica; text-indent: 12px;}
+            p {font-size:1.5em;line-height:.5em; margin-left: 20px;}
+            pre {font-size: 1em;}
+            div { border: 2px solid black; margin: 10px; border-radius: 10px; background-color: #ededed}
+        </style>
+    </head>
+    <body>
+    <h1>Open Pot Holes</h1>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        /*
+            This script retrieves 311 pot hole service request data for 
+            from the 
+            City of Chicago Data Portal
+            
+            This script doesn't update the DOM.
+
+        */
+
+        // base URL to the food inspections data
+        var baseURL = 'https://data.cityofchicago.org/resource/787j-mys9.json';
+        
+        // optional filters we're appending - status
+        var filters = '?status=Open&zip=60618';
+        
+        // full URL
+        var url = baseURL + filters;
+        
+        console.log (url);
+        
+        $(
+            // jQuery command to retrieve json data
+            
+            $.getJSON(url)
+                .done (function (data) {
+                    // TODO:  add script to add data to the DOM
+                    console.log(data);
+
+                    // loop through the records
+                    
+                    $.each(data, function(index, value){
+                       var html = "<div><h1>" + "Pothole in " + value.street_address + "</h1>" +
+                                    "<p>Status: " + value.status + "<br>" +
+                                    "<p>X-coordinate: " + value.x_coordinate + "<br>" +
+                                    "<p>Y-coordinate: " +value.y_coordinate +
+                                    "</p>" +
+                                    "</div>";
+                                    
+                        $("body").append(html);
+                    });
+                })
+            
+            
+        )
+        
+        
+    </script>
+    </body>
+</html>
