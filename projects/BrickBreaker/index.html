@@ -1,0 +1,41 @@
+    <!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+    </head>
+    <body>
+<canvas>
+
+    <script>
+        
+    var canvas = document. getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+ctx.beginPath();
+ctx.arc(240, 160, 20, 0, Math.PI*2, false);
+ctx.fillStyle = "red";
+ctx.fill();
+ctx.closePath();
+
+var x = canvas.width/2;
+var y = canvas.height - 30;
+
+<script>
+function draw(){
+    
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.beginPath();
+ctx.arc(50, 50, 10, 0, Math.PI*2);
+ctx.fillStyle = <choose a color>;
+ctx.fill();
+ctx.closePath();
+x += dx;
+
+
+}
+setInterval(draw, 10);
+
+    </script>
+</canvas>
+    </body>
+</html>
